@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Newit</string>
+    <string name="search">Search</string>
+    <string name="home">Home</string>
+    <string name="browse">Browse</string>
+    <string name="bookmarks">Bookmarks</string>
+</resources>

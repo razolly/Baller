@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_favorites"
+        android:id="@+id/home_tab"
         android:enabled="true"
-        android:icon="@android:drawable/btn_star"
+        android:icon="@drawable/ic_home"
         android:title="@string/home"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_schedules"
+        android:id="@+id/browse_tab"
         android:enabled="true"
-        android:icon="@android:drawable/btn_star"
+        android:icon="@drawable/ic_browse"
         android:title="@string/browse"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_music"
+        android:id="@+id/bookmark_tab"
         android:enabled="true"
-        android:icon="@android:drawable/btn_star"
+        android:icon="@drawable/ic_bookmark"
         android:title="@string/bookmarks"
         app:showAsAction="ifRoom" />
 

@@ -11,7 +11,7 @@ import com.example.razli.newit.R
 
 class HomeFragment : Fragment(), HomeContract.View {
 
-    override lateinit var presenter: HomeContract.Presenter
+    override var presenter: HomeContract.Presenter = HomePresenter(this)
 
     companion object {
 
@@ -19,11 +19,6 @@ class HomeFragment : Fragment(), HomeContract.View {
         fun newInstance(): HomeFragment {
             return HomeFragment()
         }
-    }
-
-    init {
-        // Create a presenter and tie to this view
-        presenter = HomePresenter(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

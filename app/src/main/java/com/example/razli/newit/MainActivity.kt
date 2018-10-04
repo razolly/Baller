@@ -3,6 +3,8 @@ package com.example.razli.newit
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import com.example.razli.newit.bookmarks.BookmarksFragment
+import com.example.razli.newit.browse.BrowseFragment
 import com.example.razli.newit.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 

@@ -10,8 +10,4 @@ class HomePresenter(private val view: HomeContract.View /*TODO add repo here*/) 
 
     }
 
-    override fun processHi(name: String) {
-        view.showHi("Hello $name")
-    }
-
 }

@@ -27,10 +27,6 @@ class HomeFragment : Fragment(), HomeContract.View {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    override fun showHi(str: String) {
-        Toast.makeText(activity, str, Toast.LENGTH_SHORT).show()
-    }
-
     override fun onResume() {
         super.onResume()
         presenter.start()

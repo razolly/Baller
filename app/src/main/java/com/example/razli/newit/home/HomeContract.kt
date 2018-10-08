@@ -7,13 +7,9 @@ interface HomeContract {
 
     interface View : BaseView<Presenter> {
 
-        fun showHi(str: String)
-
     }
 
     interface Presenter : BasePresenter {
-
-        fun processHi(name: String)
 
     }
 

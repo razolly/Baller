@@ -3,7 +3,6 @@ package com.example.razli.newit.chooseteam
 import com.example.razli.newit.BasePresenter
 import com.example.razli.newit.BaseView
 import com.example.razli.newit.network.Competition
-import com.example.razli.newit.network.CompetitionList
 
 interface ChooseTeamContract {
 

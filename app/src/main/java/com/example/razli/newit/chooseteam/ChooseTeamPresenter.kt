@@ -19,7 +19,7 @@ class ChooseTeamPresenter(private val view: ChooseTeamContract.View) : ChooseTea
 
         override fun onResponse(call: Call<CompetitionList>?, response: Response<CompetitionList>?) {
             response?.isSuccessful.let {
-                val competitionList = response?.body()?.competitions ?: emptyList()
+                val competitionList = response?.body()?.competitions ?: mutableListOf()
                 view.showCompetitions(competitionList)
             }
         }

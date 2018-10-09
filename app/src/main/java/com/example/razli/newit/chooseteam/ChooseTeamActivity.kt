@@ -27,6 +27,8 @@ class ChooseTeamActivity : AppCompatActivity(), ChooseTeamContract.View {
         setContentView(R.layout.activity_choose_team)
         competition_container.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+
         presenter.getCompetitionList()
     }
 
@@ -34,6 +36,7 @@ class ChooseTeamActivity : AppCompatActivity(), ChooseTeamContract.View {
         competition_container.adapter = CompetitionListAdapter(competitionList)
     }
 }
+
 
 class CompetitionListAdapter(private val competitions: List<Competition>)
     : RecyclerView.Adapter<CompetitionListAdapter.ViewHolder>() {
@@ -52,10 +55,18 @@ class CompetitionListAdapter(private val competitions: List<Competition>)
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         fun bindCompetition(competition: Competition) {
             with(competition) {
-                itemView.league_name.text = competition.name
-                // Do image also
-//                itemView.username.text = repo.owner.login.orEmpty() //6
-//                Picasso.get().load(repo.owner.avatar_url).into(itemView.icon)
+                // itemView.league_name.text = competition.name
+
+                val imageResource = when (competition.name) {
+                    "Championship" -> R.drawable.ic_championship
+                    "Primera Division" -> R.drawable.ic_laliga
+                    "Bundesliga" -> R.drawable.ic_bundesliga
+                    "Premier League" -> R.drawable.ic_epl
+                    "Serie A" -> R.drawable.ic_seriea
+                    else -> R.drawable.ic_epl
+                }
+
+                itemView.league_image.setImageResource(imageResource)
             }
         }
     }

@@ -26,7 +26,7 @@ import retrofit2.http.Query
 
 //@JsonClass(generateAdapter = true)
 data class CompetitionList(
-        val competitions: List<Competition>
+        val competitions: MutableList<Competition>
 ) {
 }
 

@@ -24,23 +24,21 @@ import retrofit2.http.Query
 "numberOfAvailableSeasons": 26,
 "lastUpdated": "2018-10-07T20:10:21Z"*/
 
-@JsonClass(generateAdapter = true)
+//@JsonClass(generateAdapter = true)
 data class CompetitionList(
         val competitions: List<Competition>
 ) {
 }
 
-@JsonClass(generateAdapter = true)
+//@Json(name = "currentSeason")
 data class Competition(
         val name: String,
         val code: String,
-        @Json(name = "currentSeason")
-        val seasonInfo: SeasonInfo,
+        val currentSeason: SeasonInfo,
         val lastUpdated: String
 ) {
 }
 
-@JsonClass(generateAdapter = true)
 data class SeasonInfo(
         val id: Int,
         val currentMatchday: Int

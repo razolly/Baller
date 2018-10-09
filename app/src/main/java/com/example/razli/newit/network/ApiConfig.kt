@@ -4,6 +4,8 @@ class ApiConfig private constructor() {
 
     companion object {
 
+        const val API_KEY = "X-Auth-Token: 8aa3507be8b2437faeda4d3c06e78a0d"
+
         // Country Code
         const val COUNTRY_ENGLAND = "2072"
         const val COUNTRY_GERMANY = "2088"

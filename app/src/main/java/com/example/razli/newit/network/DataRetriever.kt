@@ -15,15 +15,16 @@ class DataRetriever {
     }
 
 
-//    val client = OkHttpClient.Builder()
-//            .addInterceptor(HttpLoggingInterceptor()
-//                    .setLevel(HttpLoggingInterceptor.Level.BODY))
-//            .build()
+    val client = OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor()
+                    .setLevel(HttpLoggingInterceptor.Level.BODY))
+            .build()
 
     init {
         val retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
                 .build()
         service = retrofit.create(FootballDataApi::class.java)
     }
@@ -32,7 +33,10 @@ class DataRetriever {
      * Has a method to create a Retrofit Call object on which you enqueue() a network call,
      * passing in a Retrofit callback. A successful response body type is set to RepoResult
      */
-    fun getCompetitionList(callback: Callback<CompetitionList>, areas: String, plan: String) {
+    fun getCompetitionList(callback: Callback<CompetitionList>) {
+        // Get Tier 1 competitions in England, Germany, Italy, Spain
+        val areas = "${ApiConfig.COUNTRY_ENGLAND},${ApiConfig.COUNTRY_GERMANY},${ApiConfig.COUNTRY_ITALY},${ApiConfig.COUNTRY_SPAIN}"
+        val plan = ApiConfig.TIER_ONE
         service.getCompetitions(areas, plan).enqueue(callback)
     }
 }

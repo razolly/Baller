@@ -30,7 +30,6 @@ data class CompetitionList(
 ) {
 }
 
-//@Json(name = "currentSeason")
 data class Competition(
         val name: String,
         val code: String,

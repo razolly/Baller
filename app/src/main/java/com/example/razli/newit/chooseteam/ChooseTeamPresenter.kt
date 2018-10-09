@@ -30,7 +30,7 @@ class ChooseTeamPresenter(private val view: ChooseTeamContract.View) : ChooseTea
     }
 
     override fun getCompetitionList() {
-        dataRetriever.getCompetitionList(callback, ApiConfig.COUNTRY_ENGLAND, ApiConfig.TIER_ONE)
+        dataRetriever.getCompetitionList(callback)
     }
 
 }

@@ -8,6 +8,6 @@ interface FootballDataApi {
 
     @GET(ApiConfig.COMPETITIONS)
     fun getCompetitions(@Query("areas") areas: String,
-                        @Query("plan") plan: String): Call<CompetitionResult>
+                        @Query("plan") plan: String): Call<CompetitionList>
 
 }

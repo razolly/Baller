@@ -19,6 +19,13 @@ class ApiConfig private constructor() {
         const val LC_SERIE_A = "SA"
         const val LC_LA_LIGA = "PD"
 
+        // League ID
+        const val ID_ENGLISH_PREMIER_LEAGUE = "2021"
+        const val ID_ENGLISH_CHAMPIONSHIP = "2016"
+        const val ID_BUNDESLIGA = "2002"
+        const val ID_SERIE_A = "2019"
+        const val ID_LA_LIGA = "2014"
+
         // Plan/Tiers
         const val TIER_ONE = "TIER_ONE"
         const val TIER_TWO = "TIER_TWO"

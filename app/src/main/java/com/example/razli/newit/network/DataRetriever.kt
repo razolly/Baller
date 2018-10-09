@@ -5,6 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 class DataRetriever {
 
@@ -34,9 +35,18 @@ class DataRetriever {
      * passing in a Retrofit callback. A successful response body type is set to RepoResult
      */
     fun getCompetitionList(callback: Callback<CompetitionList>) {
-        // Get Tier 1 competitions in England, Germany, Italy, Spain
         val areas = "${ApiConfig.COUNTRY_ENGLAND},${ApiConfig.COUNTRY_GERMANY},${ApiConfig.COUNTRY_ITALY},${ApiConfig.COUNTRY_SPAIN}"
         val plan = ApiConfig.TIER_ONE
         service.getCompetitions(areas, plan).enqueue(callback)
+    }
+
+    fun getTeamList(callback: Callback<LeagueSeason>) {
+        val year = Calendar.getInstance().get(Calendar.YEAR).toString()
+        val leagueIds = listOf(ApiConfig.ID_ENGLISH_PREMIER_LEAGUE,
+                ApiConfig.ID_ENGLISH_CHAMPIONSHIP,
+                ApiConfig.ID_BUNDESLIGA,
+                ApiConfig.ID_LA_LIGA,
+                ApiConfig.ID_SERIE_A)
+        service.getLeagueTeams(leagueIds[0], year).enqueue(callback)
     }
 }

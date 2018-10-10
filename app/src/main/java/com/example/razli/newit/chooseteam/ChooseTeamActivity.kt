@@ -1,6 +1,5 @@
 package com.example.razli.newit.chooseteam
 
-import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -14,6 +13,7 @@ import com.example.razli.newit.network.Team
 import com.example.razli.newit.utils.GlideApp
 import kotlinx.android.synthetic.main.activity_choose_team.*
 import kotlinx.android.synthetic.main.item_horizontal_league.view.*
+import kotlinx.android.synthetic.main.item_team.*
 import kotlinx.android.synthetic.main.item_team.view.*
 
 class ChooseTeamActivity : AppCompatActivity(), ChooseTeamContract.View {
@@ -45,64 +45,67 @@ class ChooseTeamActivity : AppCompatActivity(), ChooseTeamContract.View {
     override fun showLeagueTeams(leagueTeamList: List<Team>) {
         teams_container.adapter = TeamListAdapter(leagueTeamList)
     }
-}
 
 
-class CompetitionListAdapter(private val competitions: List<Competition>)
-    : RecyclerView.Adapter<CompetitionListAdapter.ViewHolder>() {
+    private inner class CompetitionListAdapter(private val competitions: List<Competition>)
+        : RecyclerView.Adapter<CompetitionListAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_horizontal_league, parent, false)
-        return ViewHolder(view)
-    }
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_horizontal_league, parent, false)
+            return ViewHolder(view)
+        }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindCompetition(competitions[position])
-    }
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            holder.bindCompetition(competitions[position])
+        }
 
-    override fun getItemCount(): Int = competitions.size
+        override fun getItemCount(): Int = competitions.size
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bindCompetition(competition: Competition) {
-            with(competition) {
-                // itemView.league_name.text = competition.name
+        private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            fun bindCompetition(competition: Competition) {
+                with(competition) {
+                    // itemView.league_name.text = competition.name
 
-                val imageResource = when (competition.name) {
-                    "Championship" -> R.drawable.ic_championship
-                    "Primera Division" -> R.drawable.ic_laliga
-                    "Bundesliga" -> R.drawable.ic_bundesliga
-                    "Premier League" -> R.drawable.ic_epl
-                    "Serie A" -> R.drawable.ic_seriea
-                    else -> R.drawable.ic_epl
+                    val imageResource = when (competition.name) {
+                        "Championship" -> R.drawable.ic_championship
+                        "Primera Division" -> R.drawable.ic_laliga
+                        "Bundesliga" -> R.drawable.ic_bundesliga
+                        "Premier League" -> R.drawable.ic_epl
+                        "Serie A" -> R.drawable.ic_seriea
+                        else -> R.drawable.ic_epl
+                    }
+
+                    itemView.league_image.setImageResource(imageResource)
                 }
+            }
+        }
+    }
 
-                itemView.league_image.setImageResource(imageResource)
+
+    private inner class TeamListAdapter(private val teams: List<Team>)
+        : RecyclerView.Adapter<TeamListAdapter.ViewHolder>() {
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_team, parent, false)
+            return ViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+            holder.bindCompetition(teams[position])
+        }
+
+        override fun getItemCount(): Int = teams.size
+
+        private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            fun bindCompetition(team: Team) {
+                with(team) {
+                    itemView.team_name.text = team.name
+                    GlideApp.with(this@ChooseTeamActivity)
+                            .load(team.crestUrl ?: "")
+                            .into(itemView.club_logo)
+                }
             }
         }
     }
 }
 
-
-class TeamListAdapter(private val teams: List<Team>)
-    : RecyclerView.Adapter<TeamListAdapter.ViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_team, parent, false)
-        return ViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindCompetition(teams[position])
-    }
-
-    override fun getItemCount(): Int = teams.size
-
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bindCompetition(team: Team) {
-            with(team) {
-                itemView.team_name.text = team.name
-                // Add glide here but move inside class
-            }
-        }
-    }
-}

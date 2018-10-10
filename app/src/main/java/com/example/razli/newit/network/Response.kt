@@ -112,7 +112,7 @@ data class Team(
         val shortName: String,
         @SerializedName("tla")
         val initial: String,
-        val crestUrl: String,
+        val crestUrl: String?,
         val website: String,
         val clubColors: String,
         @SerializedName("venue")

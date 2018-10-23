@@ -13,7 +13,6 @@ import com.example.razli.newit.network.Team
 import com.example.razli.newit.utils.GlideApp
 import kotlinx.android.synthetic.main.activity_choose_team.*
 import kotlinx.android.synthetic.main.item_horizontal_league.view.*
-import kotlinx.android.synthetic.main.item_team.*
 import kotlinx.android.synthetic.main.item_team.view.*
 
 class ChooseTeamActivity : AppCompatActivity(), ChooseTeamContract.View {
